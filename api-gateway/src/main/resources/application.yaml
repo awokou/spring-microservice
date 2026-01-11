@@ -7,42 +7,18 @@ spring:
 
   cloud:
     gateway:
-      server:
-        webflux:
-          discovery:
-            locator:
-              enabled: true
-
-          routes:
-            # ================= STUDENT SERVICE =================
-            - id: student-service
-              uri: lb://STUDENT-SERVICE
-              predicates:
-                - Path=/api/students/**
-              filters:
-                - StripPrefix=1
-
-            - id: student-openapi
-              uri: lb://STUDENT-SERVICE
-              predicates:
-                - Path=/student/v3/api-docs
-              filters:
-                - RewritePath=/student/(?<path>.*), /$\{path}
-
-            # ================= SCHOOL SERVICE =================
-            - id: school-service
-              uri: lb://SCHOOL-SERVICE
-              predicates:
-                - Path=/api/schools/**
-              filters:
-                - StripPrefix=1
-
-            - id: school-openapi
-              uri: lb://SCHOOL-SERVICE
-              predicates:
-                - Path=/school/v3/api-docs
-              filters:
-                - RewritePath=/school/(?<path>.*), /$\{path}
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: student-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/students/**
+        - id: school-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/schools/**
 
 springdoc:
   api-docs:
