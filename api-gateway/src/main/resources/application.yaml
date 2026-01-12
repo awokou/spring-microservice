@@ -7,29 +7,20 @@ spring:
 
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-        - id: student-service
-          uri: http://localhost:8081
-          predicates:
-            - Path=/api/students/**
-        - id: school-service
-          uri: http://localhost:8082
-          predicates:
-            - Path=/api/schools/**
-
-springdoc:
-  api-docs:
-    enabled: false   # IMPORTANT : pas d'OpenAPI propre au Gateway
-  swagger-ui:
-    path: /swagger-ui.html
-    urls:
-      - name: Student Service
-        url: /student/v3/api-docs
-      - name: School Service
-        url: /school/v3/api-docs
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+          routes:
+            - id: STUDENT-SERVICE
+              uri: lb://STUDENT-SERVICE
+              predicates:
+                - Path=/api/students/**
+            - id: SCHOOL-SERVICE
+              uri: lb://SCHOOL-SERVICE
+              predicates:
+                - Path=/api/schools/**
 
 eureka:
   client:
