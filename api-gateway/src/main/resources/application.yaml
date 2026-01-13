@@ -1,6 +1,13 @@
 server:
   port: 8080
 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
 spring:
   application:
     name: api-gateway
@@ -12,6 +19,7 @@ spring:
           discovery:
             locator:
               enabled: true
+              lower-case-service-id: true
           routes:
             - id: STUDENT-SERVICE
               uri: lb://STUDENT-SERVICE
@@ -21,10 +29,3 @@ spring:
               uri: lb://SCHOOL-SERVICE
               predicates:
                 - Path=/api/schools/**
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
