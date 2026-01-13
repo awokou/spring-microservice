@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../../services/student.service';
+import { Component } from '@angular/core';
 import { Student } from '../../models/student.model';
+import { StudentService } from '../../services/student.service';
 
 @Component({
-  selector: 'app-student',
+  selector: 'app-student-list',
   imports: [],
-  templateUrl: './student.html',
-  styleUrl: './student.css',
+  templateUrl: './student-list.html',
+  styleUrl: './student-list.css',
 })
-export class StudentComponent implements OnInit {
+export class StudentList {
 
-  students: Student[] = [];
+  students!: Student[];
   loading = false;
   error?: string;
 
