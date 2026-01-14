@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Student } from '../../models/student.model';
 import { StudentService } from '../../services/student.service';
 
@@ -8,7 +8,7 @@ import { StudentService } from '../../services/student.service';
   templateUrl: './student-list.html',
   styleUrl: './student-list.css',
 })
-export class StudentList {
+export class StudentList implements OnInit {
 
   students!: Student[];
   loading = false;
@@ -23,8 +23,8 @@ export class StudentList {
   loadStudents(): void {
     this.loading = true;
     this.studentService.getAll().subscribe({
-      next: (data) => {
-        this.students = data;
+      next: (students) => {
+        this.students = students;
         this.loading = false;
       },
       error: () => {
