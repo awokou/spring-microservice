@@ -23,18 +23,22 @@ spring:
               enabled: true
               lower-case-service-id: true
           routes:
+            # Route cho Student Service
             - id: STUDENT-SERVICE
               uri: lb://STUDENT-SERVICE
               predicates:
                 - Path=/api/students/**
+            # Route cho school Service
             - id: SCHOOL-SERVICE
               uri: lb://SCHOOL-SERVICE
               predicates:
                 - Path=/api/schools/**
+            # Route cho employee Service
             - id: EMPLOYEE-SERVICE
               uri: lb://EMPLOYEE-SERVICE
               predicates:
                - Path=/api/employees/**
+            # Route cho department Service
             - id: DEPARTMENT-SERVICE
               uri: lb://DEPARTMENT-SERVICE
               predicates:
