@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8083
 
 eureka:
   instance:
@@ -10,8 +10,8 @@ eureka:
 
 spring:
   application:
-    name: school-service
-
+    name: department-service
+  
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/test
@@ -26,18 +26,8 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-students:
-   service:
-     url: http://localhost:8081/api/students
-
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-
-springdoc:
-  api-docs:
-    path: /v3/api-docs
-  swagger-ui:
-    path: /swagger-ui.html

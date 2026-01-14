@@ -7,6 +7,8 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
 
 spring:
   application:
@@ -29,3 +31,22 @@ spring:
               uri: lb://SCHOOL-SERVICE
               predicates:
                 - Path=/api/schools/**
+            - id: EMPLOYEE-SERVICE
+              uri: lb://EMPLOYEE-SERVICE
+              predicates:
+               - Path=/api/employees/**
+            - id: DEPARTMENT-SERVICE
+              uri: lb://DEPARTMENT-SERVICE
+              predicates:
+                - Path=/api/departments/**
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping: DEBUG
