@@ -1,5 +1,7 @@
 package com.service.student.service.entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +12,7 @@ import lombok.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Student implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -21,4 +21,12 @@ export class StudentService {
   create(student: Student): Observable<Student> {
     return this.http.post<Student>('/api/students', student);
   }
+
+  update(student: Student): Observable<Student> {
+    return this.http.post<Student>('/api/students', student);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete<any>('/api/students' + id);
+  }
 }

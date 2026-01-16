@@ -1,0 +1,37 @@
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.table-header .title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.badge {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.field {
+  margin-bottom: 1rem;
+}

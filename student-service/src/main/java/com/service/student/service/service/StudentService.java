@@ -6,7 +6,7 @@ import com.service.student.service.entity.Student;
 import java.util.List;
 
 public interface StudentService {
-    
+
     Student saveStudent(StudentDto student);
 
     StudentDto saveStudentV2(StudentDto studentDto);
